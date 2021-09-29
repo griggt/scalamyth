@@ -5,6 +5,21 @@ lazy val supportedScalaVersions = List(scala213, scala212)
 ThisBuild / organization := "io.grigg"
 ThisBuild / scalaVersion := scala213
 
+ThisBuild / licenses := List(
+  "LGPL-2.1" -> url("https://opensource.org/licenses/LGPL-2.1"),
+  "BSD-3-Clause" -> url("https://opensource.org/licenses/BSD-3-Clause")
+)
+
+ThisBuild / homepage := Some(url("https://github.com/griggt/scalamyth"))
+ThisBuild / developers := List(
+  Developer(
+    "griggt",
+    "Tom Grigg",
+    "tom@grigg.io",
+    url("https://github.com/griggt"),
+  )
+)
+
 ThisBuild / testOptions += Tests.Argument(TestFramework("munit.Framework"), "+l")
 
 Compile / unmanagedSourceDirectories += {
