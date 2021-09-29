@@ -40,9 +40,14 @@ lazy val commonSettings = Seq(
   )
 )
 
+lazy val noPublishSettings = Seq(
+  publish / skip := true,
+)
+
 lazy val scalamyth = project.in(file("."))
   .aggregate(bindings, examples)
   .settings(commonSettings, crossScalaVersions := Nil)
+  .settings(noPublishSettings)
 
 lazy val bindings = project.in(file("bindings"))
   .settings(commonSettings)
@@ -67,6 +72,7 @@ lazy val bindings = project.in(file("bindings"))
 lazy val examples = project.in(file("examples"))
   .dependsOn(bindings)
   .settings(commonSettings)
+  .settings(noPublishSettings)
   .settings(
-    crossScalaVersions := supportedScalaVersions
+    crossScalaVersions := supportedScalaVersions,
   )
