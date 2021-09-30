@@ -44,14 +44,14 @@ lazy val noPublishSettings = Seq(
   publish / skip := true,
 )
 
-lazy val scalamyth = project.in(file("."))
+lazy val root = project.in(file("."))
   .aggregate(bindings, examples)
-  .settings(commonSettings, crossScalaVersions := Nil)
   .settings(noPublishSettings)
 
 lazy val bindings = project.in(file("bindings"))
   .settings(commonSettings)
   .settings(
+    name := "scalamyth",
     description := "Scala bindings for MythTV",
     crossScalaVersions := supportedScalaVersions,
     libraryDependencies ++= Seq(
