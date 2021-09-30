@@ -4,6 +4,7 @@ lazy val supportedScalaVersions = List(scala213, scala212)
 
 ThisBuild / scalaVersion := scala213
 ThisBuild / versionScheme := Some("early-semver")
+ThisBuild / versionPolicyIntention := Compatibility.None
 
 ThisBuild / licenses := List(
   "LGPL-2.1" -> url("https://opensource.org/licenses/LGPL-2.1"),
