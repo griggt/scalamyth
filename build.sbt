@@ -52,6 +52,7 @@ lazy val scalamyth = project.in(file("."))
 lazy val bindings = project.in(file("bindings"))
   .settings(commonSettings)
   .settings(
+    description := "Scala bindings for MythTV",
     crossScalaVersions := supportedScalaVersions,
     libraryDependencies ++= Seq(
       "org.scala-lang.modules"     %% "scala-collection-compat" % "2.5.0",
