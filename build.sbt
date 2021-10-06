@@ -21,6 +21,7 @@ ThisBuild / developers := List(
     url("https://github.com/griggt"),
   )
 )
+ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
 
 ThisBuild / testOptions += Tests.Argument(TestFramework("munit.Framework"), "+l")
 
