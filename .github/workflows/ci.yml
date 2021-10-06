@@ -37,11 +37,13 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     needs: ['test']
-    if: "github.event_name == 'push' && github.ref == 'refs/heads/master'"
+    if: "github.event_name == 'push' && github.ref == 'refs/heads/main'"
     name: 'Documentation'
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Build docs
         run: |
