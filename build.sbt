@@ -2,8 +2,25 @@ lazy val scala213 = "2.13.6"
 lazy val scala212 = "2.12.15"
 lazy val supportedScalaVersions = List(scala213, scala212)
 
-ThisBuild / organization := "io.grigg"
 ThisBuild / scalaVersion := scala213
+ThisBuild / versionScheme := Some("early-semver")
+ThisBuild / versionPolicyIntention := Compatibility.None
+
+ThisBuild / licenses := List(
+  "LGPL-2.1" -> url("https://opensource.org/licenses/LGPL-2.1"),
+  "BSD-3-Clause" -> url("https://opensource.org/licenses/BSD-3-Clause")
+)
+
+ThisBuild / organization := "io.grigg"
+ThisBuild / homepage := Some(url("https://github.com/griggt/scalamyth"))
+ThisBuild / developers := List(
+  Developer(
+    "griggt",
+    "Tom Grigg",
+    "tom@grigg.io",
+    url("https://github.com/griggt"),
+  )
+)
 
 ThisBuild / testOptions += Tests.Argument(TestFramework("munit.Framework"), "+l")
 
@@ -25,13 +42,19 @@ lazy val commonSettings = Seq(
   )
 )
 
-lazy val scalamyth = project.in(file("."))
+lazy val noPublishSettings = Seq(
+  publish / skip := true,
+)
+
+lazy val root = project.in(file("."))
   .aggregate(bindings, examples)
-  .settings(commonSettings, crossScalaVersions := Nil)
+  .settings(noPublishSettings)
 
 lazy val bindings = project.in(file("bindings"))
   .settings(commonSettings)
   .settings(
+    name := "scalamyth",
+    description := "Scala bindings for MythTV",
     crossScalaVersions := supportedScalaVersions,
     libraryDependencies ++= Seq(
       "org.scala-lang.modules"     %% "scala-collection-compat" % "2.5.0",
@@ -52,6 +75,7 @@ lazy val bindings = project.in(file("bindings"))
 lazy val examples = project.in(file("examples"))
   .dependsOn(bindings)
   .settings(commonSettings)
+  .settings(noPublishSettings)
   .settings(
-    crossScalaVersions := supportedScalaVersions
+    crossScalaVersions := supportedScalaVersions,
   )
