@@ -17,7 +17,7 @@ jobs:
           - 11
           - 17
         scala:
-          - 2.13.6
+          - 2.13.8
           - 2.12.15
 
     name: Scala ${{ matrix.scala }}, Java ${{ matrix.java }}
