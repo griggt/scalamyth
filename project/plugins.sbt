@@ -1,2 +1,2 @@
-addSbtPlugin("ch.epfl.scala" % "sbt-version-policy" % "2.0.1")
+addSbtPlugin("ch.epfl.scala" % "sbt-version-policy" % "2.1.3")
 addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.5.10")
