@@ -64,7 +64,7 @@ lazy val bindings = project.in(file("bindings"))
       "io.spray"                   %% "spray-json"      % "1.3.6",
       "ch.qos.logback"              % "logback-classic" % "1.2.11",
       "net.straylightlabs"          % "hola"            % "0.2.3",
-      "org.scalameta"              %% "munit"           % "0.7.29" % Test,
+      "org.scalameta"              %% "munit"           % "1.0.0" % Test,
     ),
     testFrameworks += new TestFramework("munit.Framework"),
     Compile / doc / scalacOptions ++= Seq(
